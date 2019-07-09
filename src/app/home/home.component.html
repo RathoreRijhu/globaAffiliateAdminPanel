@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CashbackEngine Admin Panel</title>
+	<!-- <link href="css/cashbackengine.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.calendrical.js"></script>
+	<script type="text/javascript" src="js/easySlider1.7.js"></script>
+	<script type="text/javascript" src="js/scripts.js" language="javascript"></script> -->
+</head>
+<body>
+
+<div id="wrapper">
+
+	<div id="header">
+		<div id="logo"><a class="nav-item nav-link" routerLink="/admin"><img src="./assets/images/logo.svg" border="0" /></a></div>
+		<div id="right_header">Welcome, <b>Admin</b>! <a href="<?php echo SITE_URL; ?>" target="_blank">View Site</a> | <a class="logout" routerLink="/login">Logout</a></div>
+	</div>
+
+	<div id="content-wrapper">
+
+		<div id="sidebar">
+			<ul>
+				<!-- <li><a href="index.php">Home</a></li> -->
+				<li><a class="nav-item nav-link" routerLink="/admin">Home</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/users">Members</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/retailers">Retailers</a></li>
+				<!-- <?php if (GetRetailerReportsTotal() > 0) { ?>
+					<li><a href="retailer_reports.php">Retailer Reports <span class="new_count"><?php echo GetRetailerReportsTotal(); ?></span></a></li>
+				<?php } ?> -->
+				<li><a class="nav-item nav-link" routerLink="/admin/clicks">Click History</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/coupons">Coupons</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/categories">Categories</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/countries">Countries</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/reviews">Reviews</a></li>
+				<!-- <?php if (GetInvitationsTotal() > 0) { ?>
+					<li><a href="invitations.php">Invitations</a></li>
+				<?php } ?> -->
+				<li><a class="nav-item nav-link" routerLink="/admin/payments">Payments</a></li>
+				<!-- <li><a href="payments.php">Payments</a></li>
+				<?php if (GetRequestsTotal() > 0) { ?>
+					<li><a href="cashout_requests.php">Withdrawal Requests <span class="new_count"><?php echo GetRequestsTotal(); ?></span></a></li>
+				<?php } ?> -->
+				<li><a class="nav-item nav-link" routerLink="/admin/money2user">Manual Credit</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/csv_import">Upload CSV-Report</a></li>
+				<!-- <li><a href="messages.php">Messages <?php if (GetMessagesTotal() > 0) { ?> <span class="new_count"><?php echo GetMessagesTotal(); ?></span><?php } ?></a></li> -->
+				<li><a class="nav-item nav-link" routerLink="/admin/affnetworks">Affiliate Networks</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/pmethods">Payment Methods</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/news">News</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/content">Content</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/etemplates">Email Templates</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/email2users">Email Members</a></li>
+				<li><a class="nav-item nav-link" routerLink="/admin/settings">Settings</a></li>
+				<li><a class="nav-item nav-link" routerLink="/login">Log Out</a></li>
+			</ul>
+		</div>
+<router-outlet></router-outlet>

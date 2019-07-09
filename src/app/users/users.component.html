@@ -1,0 +1,138 @@
+<!-- <p>
+  users works!
+</p> -->
+
+       <div id="addnew" align="right"><a class="addnew" routerLink="/admin/add-user">Add Member</a></div>
+
+       <h2>Members</h2>
+
+        <!-- <?php if ($total > 0) { ?>
+
+			<?php if (isset($_GET['msg']) && $_GET['msg'] != "") { ?>
+			<div class="success_box">
+				<?php
+
+					switch ($_GET['msg'])
+					{
+						case "added": echo "User has been successfully added"; break;
+						case "updated": echo "User information has been successfully edited"; break;
+						case "deleted": echo "User has been successfully deleted"; break;
+					}
+
+				?>
+			</div>
+			<?php } ?> -->
+
+	<table>	
+		<form id="form1" name="form1" method="get" action="">
+		<table bgcolor="#F9F9F9" width="100%" border="0" cellpadding="3" cellspacing="0" align="center">
+		<tr>
+		<td nowrap="nowrap" width="40%" valign="middle" align="left">
+           Sort by: 
+          <select name="column" id="column" onChange="document.form1.submit()">
+			<option value="ids" >Signup Date</option>
+			<option value="fname" >First Name</option>
+			<option value="lname" >Last Name</option>
+			<option value="email" >Email</option>
+			<option value="country" >Country</option>
+			<option value="reg_source" >Signup Source</option>
+			<option value="status" >Status</option>
+          </select>
+          <select name="order" id="order" onChange="document.form1.submit()">
+			<option value="desc" >Descending</option>
+			<option value="asc" >Ascending</option>
+          </select>
+          <select name="show" id="show" onChange="document.form1.submit()">
+			<option value="10" >10</option>
+			<option value="50" >50</option>
+			<option value="100" >100</option>
+			<option value="111111111" >ALL</option>
+          </select>
+			</td>
+			<td width="35%" valign="middle" align="left">
+				<div class="admin_filter">
+					<input type="text" name="filter" value="<?php echo $filter; ?>" class="textbox" size="30" /> <input type="submit" class="submit" value="Search" /> 
+				</div>
+			</td>
+			<td nowrap="nowrap" width="20%" valign="middle" align="right">
+			   Showing
+			</td>
+			</tr>
+			</table>
+			</form>
+
+			<form id="form2" name="form2" method="post" action="">
+            <table align="center" align="center" width="100%" border="0" cellpadding="3" cellspacing="0">
+			<tr bgcolor="#DCEAFB" align="center">
+				<!-- <th width="3%"><input type="checkbox" name="selectAll" onclick="checkAll();" class="checkbox" /></th> -->
+				<th width="10%">ID</th>
+				<th width="25%">Name</th>
+				<th width="25%">Email</th>
+				<th width="10%">Country</th>
+				<th width="15%">Balance</th>
+				<th width="10%">Clicks</th>
+				<th width="10%">Status</th>
+				<th width="14%">Signup Date</th>
+				<th width="12%">Actions</th>
+			</tr>
+				 <tr *ngFor ="let users of all_users_list[0]">
+					<td align="center" valign="middle"><input type="checkbox" class="checkbox"/></td>
+					<!-- <nav>
+  <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
+  <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+</nav> -->
+					<td nowrap="nowrap" align="center" valign="middle"></td>
+					<td align="left" valign="middle">{{users['user_id']}}</td>
+					<td align="left" valign="middle"><a routerLink="/users-detaisl" routerLinkActive="active">{{users['username']}}</a></td>
+					<td align="left" valign="middle"><a href ="mailto:{{users['email']}}" target="_blank">{{users['email']}}</a></td>
+					<td align="center" valign="middle">{{users['country']}}</td>
+					<td align="center" valign="middle"><a style="color: #000" href="user_payments.php?id=<?php echo $row['user_id']; ?>"></a></td>
+					<td align="center" valign="middle"><a href="clicks.php?user=<?php echo $row['user_id']; ?>"></a></td>
+					<td align="center" valign="middle"></td>
+					<td align="center" valign="middle"></td>
+					<td nowrap="nowrap" align="center" valign="middle" >
+						<a href="money2user.php?id=<?php echo $row['user_id']; ?>&pn=<?php echo $page; ?>&column=<?php echo $_GET['column']; ?>&order=<?php echo $_GET['order']; ?>" title="Transfer Money"><img src="assets/images/addmoney.gif" border="0" alt="Transfer Money" /></a>
+						<a href="user_details.php?id=<?php echo $row['user_id']; ?>&pn=<?php echo $page; ?>&column=<?php echo $_GET['column']; ?>&order=<?php echo $_GET['order']; ?>" title="View"><img src="assets/images/view.png" border="0" alt="View" /></a>
+						<a href="user_edit.php?id=<?php echo $row['user_id']; ?>&pn=<?php echo $page; ?>&column=<?php echo $_GET['column']; ?>&order=<?php echo $_GET['order']; ?>" title="Edit"><img src="assets/images/edit.png" border="0" alt="Edit" /></a>
+						<a href="#" onclick="if (confirm('Are you sure you really want to delete this user?') )location.href='user_delete.php?id=<?php echo $row['user_id']; ?>&pn=<?php echo $page; ?>&column=<?php echo $_GET['column']; ?>&order=<?php echo $_GET['order']; ?>';" title="Delete"><img src="assets/images/delete.png" border="0" alt="Delete" /></a>
+					</td>
+			</tr>
+			<!-- <tr *ngFor ="let users of all_users_list[0] | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                <td>{{i}}</td> -->
+            <!-- <tr *ngFor ="let users of all_users_list[0]">
+                <td id="usernam">
+                  <textarea rows="2" class="editinput" type="text" [(ngModel)]="users['user_name']" 
+                  [disabled]="!users.isEditable" ></textarea>
+                </td>
+                <td id="userid">
+                  <textarea rows="2" class="editinput" type="text" [(ngModel)]="users['email_id']" 
+                  [disabled]="!users.isEditable" ></textarea>
+                </td>
+                <td id="userid" >{{users['email_id']}}</td> 
+                <td>
+                  <div class="col-md text-center">
+                    <button type="button" class="btn btn-sm btn-ghost-success"
+                    (click)="users.isEditable=!users.isEditable" *ngIf="!users.isEditable">Edit</button>
+                    <button class="btn btn-sm btn-success" *ngIf="users.isEditable" (click)="users.isEditable=editsave(users['user_name'],users['email_id'])">Save</button>
+                    <button type="button" class="btn btn-sm btn-ghost-danger" 
+                    (click)="deleteuser(users['user_name'],users['email_id'])">Delete</button>
+                  </div>
+                </td>
+            </tr> -->
+		<!-- 	<tr>
+				<td style="border-top: 1px solid #F5F5F5" colspan="10" align="left">
+					<input type="hidden" name="column" value="<?php echo $rrorder; ?>" />
+					<input type="hidden" name="order" value="<?php echo $rorder; ?>" />
+					<input type="hidden" name="page" value="<?php echo $page; ?>" />
+					<input type="hidden" name="action" value="delete" />
+					<input type="submit" class="submit" name="GoDelete" id="GoDelete" value="Delete Selected" />
+				</td>
+			</tr> -->
+			<tr>
+				<td colspan="10" align="center">
+				</td>
+			</tr>
+            </table>
+			</form>
+		</table>
+	<router-outlet></router-outlet>

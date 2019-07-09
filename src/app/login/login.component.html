@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<title>Log in | CashbackEngine Admin Panel</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="assets/css/login.css" />
+	<!-- <link rel="shortcut icon" href="<?php echo SITE_URL; ?>favicon.ico" /> -->
+	<!-- <link rel="icon" type="image/ico" href="<?php echo SITE_URL; ?>favicon.ico" /> -->
+</head>
+<body>
+
+<table align="center" cellpadding="5" cellspacing="0" border="0" align="center">
+<tr>
+	<td height="170" valign="bottom" align="center">
+		<a target="_blank" href="http://www.cashbackengine.net"><img src="/assets/images/logo.svg" alt="CashbackEngine" title="CashbackEngine" border="0" /></a><br/>
+	</td>
+</tr>
+</table>
+
+<table width="350" align="center" cellpadding="5" cellspacing="0" border="0" align="center">
+<tr>
+	<td valign="top" align="left">
+      
+       <h2 style="margin-bottom: 3px;">Admin Panel</h2>
+
+		<form>
+        <table bgcolor="#FFFFFF" width="100%" class="login_box" align="center" cellpadding="3" cellspacing="0" border="0">
+          <tr>
+            <td width="80" align="right" valign="middle">Username:</td>
+            <td><input type="email" class="textbox" 
+                     name="adminname"[value]="adminName"
+                    (input)="adminName=$event.target.value" required/></td>
+          </tr>
+          <tr>
+            <td align="right" valign="middle">Password:</td>
+            <td><input type="password" class="textbox"  name="password" [value]="adminPassword"
+                    (input)="adminPassword=$event.target.value" required/></td>
+          </tr>
+          <tr>
+			<td align="center" valign="middle">&nbsp;</td>
+			<!-- <td align="left" valign="middle">
+		  		<input type="hidden" name="action" value="login" />
+				<input type="submit" class="submit" name="login" id="login" value="Log in" />
+			</td> -->
+			<td align="left" valign="middle">
+				<button type="button" class="submit" 
+                      (click)="adminLogin(adminName,adminPassword)">Login</button>
+			</td>
+          </tr>
+        </table>
+      </form>
+
+	</td>
+</tr>
+</table>
+</body>
+</html>
+
